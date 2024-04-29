@@ -1,3 +1,1 @@
-import genDeck from './genDeck'
-
-const deck = genDeck();
+import {genDeck, deck} from './genDeck'
