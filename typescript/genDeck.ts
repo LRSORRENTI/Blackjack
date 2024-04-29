@@ -21,8 +21,10 @@ for(const card of cards) {
         deck.push({card: card, suit: suit});
     }
 }
+// console.log('from getDeck.ts', deck.length)
 return deck;
 }
 
 const myDeck = genDeck();
-export {myDeck};
+// console.log('myDeck.length from genDeck.tsm', myDeck.length)
+export {myDeck, card};
