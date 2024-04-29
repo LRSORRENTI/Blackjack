@@ -24,5 +24,5 @@ for(const card of cards) {
 return deck;
 }
 
-const deck = genDeck();
-export {deck};
+const myDeck = genDeck();
+export {myDeck};
