@@ -15,7 +15,7 @@ export default function drawCard(deck: any) {
     // alter the length of the array, if we used slice() 
     // instead it would not modify the length
     deck.splice(randomIdx, 1);
-    console.log(randomIdx, card);
+    // console.log(randomIdx, card);
     return card;
 }
 

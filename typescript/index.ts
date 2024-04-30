@@ -1,1 +1,0 @@
-import {genDeck, deck} from './genDeck'

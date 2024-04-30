@@ -1,17 +1,22 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+// Function to draw single card from generated deck
+// import { myDeck } from "./genDeck";
 // add way to grab a random card from a deck, maybe 
 // generate a random number between 0 and 51 and then use 
 // that number to grab the index?
-function drawCard() {
+Object.defineProperty(exports, "__esModule", { value: true });
+// console.log(myDeck.length)
+function drawCard(deck) {
+    // generate random number with max of deck.length which is 52
+    const randomIdx = Math.floor(Math.random() * deck.length);
+    const card = deck[randomIdx];
+    // console.log(deck);
+    // splice() is an important choice because we need to 
+    // alter the length of the array, if we used slice() 
+    // instead it would not modify the length
+    deck.splice(randomIdx, 1);
+    // console.log(randomIdx, card);
+    return card;
 }
 exports.default = drawCard;
-let getNum = Math.floor(Math.random() * 51);
-console.log(getNum);
-for (let i = 0; i < 1000; i++) {
-    let getNumLoop = Math.floor(Math.random() * 51);
-    if (i === 51) {
-        console.log(i, 'hhoray');
-    }
-    console.log(getNumLoop);
-}
+// const myCard = drawCard(myDeck);
