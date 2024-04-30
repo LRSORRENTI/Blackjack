@@ -1,51 +1,45 @@
 import drawCard from './drawCard';
 import { myDeck } from './genDeck';
 import { playerHand, dealerHand } from "./getHands";
-import { checkScore } from './checkScore';
+import  checkScore  from './checkScore';
 
-// Create game loop:
+function updateHandsDisplay() {
+    const playerHandDiv = document.getElementById('player-hand');
+    const dealerHandDiv = document.getElementById('dealer-hand');
 
-console.log("The starting player hand is ", playerHand);
-console.log('The starting player score is ', checkScore(playerHand));
-console.log("The starting dealer hand is ", dealerHand);
-console.log('The starting dealer score is ', checkScore(dealerHand));
+    // Clear current hands display
+    playerHandDiv!.innerHTML = `<h2>Player's Hand</h2>`;
+    dealerHandDiv!.innerHTML = `<h2>Dealer's Hand</h2>`;
 
-while(true) {
-    // deal player card 
+    // Display player's hand
+    playerHand.forEach(card => {
+        playerHandDiv!.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
+    });
+
+    // Display dealer's hand, hide second card
+    dealerHandDiv!.innerHTML += `<p>${dealerHand[0].card} of ${dealerHand[0].suit}</p>`;
+    dealerHandDiv!.innerHTML += `<p>Hidden Card</p>`;
+}
+
+document.getElementById('hit-button')!.addEventListener('click', () => {
     playerHand.push(drawCard(myDeck));
-    // check if player busts
     const playerScore = checkScore(playerHand);
-    let dealerScore = checkScore(dealerHand);
+    updateHandsDisplay();
     if (playerScore > 21) {
-        // break out of while loop if below conditions are met
-        console.log("Player loses, your final score is: ", playerScore)
-        console.log("The dealer had: ", dealerScore);
-        break;
-    };
-    // check if player has 21
-    if(playerScore === 21) {
-        console.log('Player wins! Your final score is ', playerScore);
-        console.log('The dealer score was ', dealerScore);
-        break;
-    };
-    // deal dealer card
-    dealerHand.push(drawCard(myDeck));
-    // check if dealer busts
-    dealerScore = checkScore(dealerHand);
-    // check if dealer has 21
-    if(dealerScore > 21) {
-        console.log('Player wins! Your final score is ', playerScore);
-        console.log('The dealer score was ', dealerScore);
-        break;
-    };
-    if(dealerScore === 21) {
-        console.log("Player loses, your final score is: ", playerScore)
-        console.log("The dealer had: ", dealerScore);
-        break;
-    };
-};
+        alert("Busted! Player loses.");
+        return;
+    }
+});
 
-console.log("The ending player hand is ", playerHand);
-console.log('The ending player score is ', checkScore(playerHand));
-console.log("The ending dealer hand is ", dealerHand);
-console.log('The ending dealer score is ', checkScore(dealerHand));
+document.getElementById('stand-button')!.addEventListener('click', () => {
+    let dealerScore = checkScore(dealerHand);
+    while (dealerScore < 17) {
+        dealerHand.push(drawCard(myDeck));
+        dealerScore = checkScore(dealerHand);
+    }
+    updateHandsDisplay();
+    alert(`Final scores - Player: ${checkScore(playerHand)}, Dealer: ${dealerScore}`);
+});
+
+// Initial cards display
+updateHandsDisplay();

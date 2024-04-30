@@ -1,8 +1,5 @@
-"use strict";
 // Generate Deck File
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.myDeck = exports.genDeck = void 0;
-function genDeck() {
+export function genDeck() {
     const deck = [];
     const cards = ["2", "3", "4", "5", "6", "7", "8", "9", "10",
         "Jack", "Queen", "King", "Ace"];
@@ -16,6 +13,6 @@ function genDeck() {
     // console.log('from getDeck.ts', deck.length)
     return deck;
 }
-exports.genDeck = genDeck;
 const myDeck = genDeck();
-exports.myDeck = myDeck;
+// console.log('myDeck.length from genDeck.tsm', myDeck.length)
+export { myDeck };

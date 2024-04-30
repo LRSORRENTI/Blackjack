@@ -1,7 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkScore = void 0;
-const getHands_1 = require("./getHands");
+import { playerHand, dealerHand } from "./getHands.js";
 function checkScore(hand) {
     let total = 0;
     for (const cardObj of hand) {
@@ -23,6 +20,6 @@ function checkScore(hand) {
     console.log(hand);
     return total;
 }
-exports.checkScore = checkScore;
-console.log('player hand:', checkScore(getHands_1.playerHand));
-console.log('dealer hand:', checkScore(getHands_1.dealerHand));
+console.log('player hand:', checkScore(playerHand));
+console.log('dealer hand:', checkScore(dealerHand));
+export default { checkScore };

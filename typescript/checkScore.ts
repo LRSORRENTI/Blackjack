@@ -24,4 +24,4 @@ function checkScore(hand: any) {
 console.log('player hand:', checkScore(playerHand));
 console.log('dealer hand:', checkScore(dealerHand));
 
-export {checkScore};
+export  {checkScore};
