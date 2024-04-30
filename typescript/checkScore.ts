@@ -16,10 +16,12 @@ function checkScore(hand: any) {
         else {
             total += parseInt(cardObj.card)
         }
-    }
-    console.log(hand)
+    };
+    console.log(hand);
     return total;
 }
 
-console.log('player hand:', checkScore(playerHand))
-console.log('dealer hand:', checkScore(dealerHand))
+console.log('player hand:', checkScore(playerHand));
+console.log('dealer hand:', checkScore(dealerHand));
+
+export {checkScore};
