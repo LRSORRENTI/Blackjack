@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.checkScore = void 0;
 const getHands_1 = require("./getHands");
 function checkScore(hand) {
     let total = 0;
@@ -18,8 +19,10 @@ function checkScore(hand) {
             total += parseInt(cardObj.card);
         }
     }
+    ;
     console.log(hand);
     return total;
 }
+exports.checkScore = checkScore;
 console.log('player hand:', checkScore(getHands_1.playerHand));
 console.log('dealer hand:', checkScore(getHands_1.dealerHand));
