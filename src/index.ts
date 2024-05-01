@@ -28,15 +28,6 @@ function updateHandsDisplay() {
 
 let showDealerHoleCard = false; // Initialize this variable to control visibility of the dealer's hole card
 
-document.getElementById('hit-button')!.addEventListener('click', () => {
-    playerHand.push(drawCard(myDeck));
-    updateHandsDisplay();
-    const playerScore = checkScore(playerHand);
-    if (playerScore > 21) {
-        alert("Busted! Player loses.");
-        return;
-    }
-});
 
 // Delay function to allow the UI to update
 function delay(ms: number) {
@@ -48,6 +39,16 @@ function dealerHasSoftSeventeen(hand: card[]): boolean {
     const containsAce = hand.some(card => card.card === 'Ace');
     return score === 17 && containsAce;
 }
+
+document.getElementById('hit-button')!.addEventListener('click', () => {
+    playerHand.push(drawCard(myDeck));
+    updateHandsDisplay();
+    const playerScore = checkScore(playerHand);
+    if (playerScore > 21) {
+        alert("Busted! Player loses.");
+        return;
+    }
+});
 
 document.getElementById('stand-button')!.addEventListener('click', async () => {
     let dealerScore = checkScore(dealerHand);
@@ -74,7 +75,6 @@ document.getElementById('stand-button')!.addEventListener('click', async () => {
         alert(resultMessage);
     }, 500); // Short delay before showing results
 });
-
 // document.getElementById('stand-button')!.addEventListener('click', () => {
 //     let dealerScore = checkScore(dealerHand);
 //     while (dealerScore < 17) {
@@ -92,7 +92,34 @@ document.getElementById('stand-button')!.addEventListener('click', async () => {
 //         alert("It's a tie!");
 //     }
 // });
+// document.getElementById('new-game-button').addEventListener('click', startNewGame);
 
+// function startNewGame() {
+//     // Reset game state
+//     playerHand = [];
+//     dealerHand = [];
+//     showDealerHoleCard = false; // Hide dealer's hole card for new game
+//     myDeck = genDeck(); // Regenerate or reshuffle the deck
+
+//     // Reset UI
+//     const playerHandDiv = document.getElementById('player-hand');
+//     const dealerHandDiv = document.getElementById('dealer-hand');
+//     playerHandDiv!.innerHTML = `<h2>Player's Hand</h2>`;
+//     dealerHandDiv!.innerHTML = `<h2>Dealer's Hand</h2>`;
+
+//     // Initial hands
+//     playerHand.push(drawCard(myDeck));
+//     playerHand.push(drawCard(myDeck));
+//     dealerHand.push(drawCard(myDeck));
+//     dealerHand.push(drawCard(myDeck));
+
+//     // Update UI with initial hands
+//     updateHandsDisplay();
+// }
+
+document.getElementById('new-game-button')!.addEventListener('click', () => {
+    window.location.reload(); // This reloads the current document.
+});
 
 // Initial cards displayed
 updateHandsDisplay(); // Initially hide dealer's hole card
