@@ -2,3 +2,31 @@
     margin: 0;
     padding: 0;
 }
+#dealer-hand, #player-hand {
+    display: flex; 
+    flex-direction: column;
+}
+
+.hand {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.card {
+    width: 100px; /* Adjust size as needed */
+    height: 150px; /* Adjust size as needed */
+    border: 1px solid #000;
+    border-radius: 10px;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    background-color: #ccc; /* Gray background for hidden card */
+}

@@ -8,18 +8,22 @@
 </head>
 <body>
     <h1>Blackjack Game</h1>
-    <div id="dealer-hand">
+    <div id="dealer-hand" class="hand">
         <h2>Dealer's Hand</h2>
-        <!-- Cards will be appended here -->
+        <div class="card"></div>
+        <div class="card hidden"></div> <!-- Hidden card -->
     </div>
-    <div id="player-hand">
+    
+    <div id="player-hand" class="hand">
         <h2>Player's Hand</h2>
-        <!-- Cards will be appended here -->
+        <div class="card"></div>
+        <div class="card"></div>
     </div>
+    
     <button id="hit-button">Hit</button>
     <button id="stand-button">Stand</button>
     <button id="new-game-button">New Game</button>
-
+    <!-- <img src="./assets/clubs.svg" alt=""> -->
     <script type="module" src="./dist/index.js"></script>
 </body>
 </html>

@@ -121,5 +121,30 @@ document.getElementById('new-game-button')!.addEventListener('click', () => {
     window.location.reload(); // This reloads the current document.
 });
 
+// Assuming cardData contains card information like { card: '10', suit: 'hearts' }
+interface Card {
+    card: string;
+    suit: string;
+}
+
+function renderCard(suit: any) {
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('card');
+    cardDiv.innerHTML = `<img src="/assets/${suit}.svg" alt="${suit}">`;
+    return cardDiv;
+}
+
+function renderHand(hand: Card[], handDiv: HTMLElement | null) {
+    hand.forEach(card => {
+        const cardDiv = renderCard(card.suit);
+        handDiv!.appendChild(cardDiv);
+    });
+}
+
+// Call renderHand for both dealer's and player's hands
+renderHand(dealerHand, document.getElementById('dealer-hand'));
+renderHand(playerHand, document.getElementById('player-hand'));
+
+
 // Initial cards displayed
 updateHandsDisplay(); // Initially hide dealer's hole card
