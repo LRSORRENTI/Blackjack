@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-#dealer-hand, #player-hand {
+/* #dealer-hand, #player-hand {
     display: flex; 
     flex-direction: column;
 }
@@ -14,19 +14,25 @@
 }
 
 .card {
-    width: 100px; /* Adjust size as needed */
-    height: 150px; /* Adjust size as needed */
+    width: 100px;
+    height: 150px; 
     border: 1px solid #000;
     border-radius: 10px;
     margin-right: 10px;
     overflow: hidden;
-}
+} */
 
-.card img {
+/* .card img {
     width: 100%;
     height: 100%;
 }
 
 .hidden {
-    background-color: #ccc; /* Gray background for hidden card */
+    background-image: url('../assets/card.svg');
+    width: 150px;
+    height: 150px;
+
+    background-color: #ccc; 
 }
+
+*/
