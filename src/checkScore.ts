@@ -2,15 +2,15 @@ import { playerHand, dealerHand } from "./getHands";
 
 function checkScore(hand: any) {
     let total = 0;
-    for(const cardObj of hand){
+    for (const cardObj of hand) {
         // check if jack, queen or king
-        if(cardObj.card.length > 2 && cardObj.card != 'Ace'){
+        if (cardObj.card.length > 2 && cardObj.card != 'Ace') {
             // if length is greater than 2 ie king, queen,
             // jack then assign 10
             // console.log(cardObj.card)
             total += 10
         }
-        else if(cardObj.card === 'Ace'){
+        else if (cardObj.card === 'Ace') {
             total += 1
         }
         else {
@@ -24,4 +24,4 @@ function checkScore(hand: any) {
 console.log('player hand:', checkScore(playerHand));
 console.log('dealer hand:', checkScore(dealerHand));
 
-export {checkScore};
+export { checkScore };
