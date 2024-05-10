@@ -2,6 +2,104 @@
     margin: 0;
     padding: 0;
 }
+
+/* stylesheets/index.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2e2e2e;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+h1, h2 {
+    margin: 10px 0;
+}
+
+.hand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+    padding: 10px;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    max-width: 90%;
+    width: 300px;
+    background-color: #3b3b3b;
+}
+
+.card {
+    width: 70px;
+    height: 100px;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    color: #c82020;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card.hidden {
+    background-color: #4a4a4a;
+    color: #4a4a4a;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #009688;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #00796b;
+}
+
+@media (min-width: 768px) {
+    .hand {
+        flex-direction: row;
+    }
+
+    .card {
+        width: 90px;
+        height: 130px;
+        font-size: 2rem;
+    }
+
+    button {
+        padding: 12px 18px;
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hand {
+        width: 500px;
+    }
+
+    .card {
+        width: 100px;
+        height: 150px;
+        font-size: 2.2rem;
+    }
+}
+
+
 /* #dealer-hand, #player-hand {
     display: flex; 
     flex-direction: column;

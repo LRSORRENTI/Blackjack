@@ -2,23 +2,50 @@ import drawCard from './drawCard.js';
 import { myDeck } from './genDeck.js';
 import { playerHand, dealerHand } from "./getHands.js";
 import { checkScore } from './checkScore.js';
+// function updateHandsDisplay() {
+//     const playerHandDiv = document.getElementById('player-hand');
+//     const dealerHandDiv = document.getElementById('dealer-hand');
+//     // Clear current hands display
+//     playerHandDiv.innerHTML = `<h2>Player's Hand</h2>`;
+//     dealerHandDiv.innerHTML = `<h2>Dealer's Hand</h2>`;
+//     // Display player's hand
+//     playerHand.forEach(card => {
+//         playerHandDiv.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
+//     });
+//     // Display dealer's hand
+//     dealerHand.forEach((card, index) => {
+//         if (index === 1 && !showDealerHoleCard) { // Hide second card initially
+//             dealerHandDiv.innerHTML += `<p>Hidden Card</p>`;
+//         }
+//         else {
+//             dealerHandDiv.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
+//         }
+//     });
+// }
 function updateHandsDisplay() {
     const playerHandDiv = document.getElementById('player-hand');
     const dealerHandDiv = document.getElementById('dealer-hand');
+
     // Clear current hands display
     playerHandDiv.innerHTML = `<h2>Player's Hand</h2>`;
     dealerHandDiv.innerHTML = `<h2>Dealer's Hand</h2>`;
-    // Display player's hand
+
+    // Display player's hand using the styled `.card` class
     playerHand.forEach(card => {
-        playerHandDiv.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
+        const cardElement = renderCard(card);
+        playerHandDiv.appendChild(cardElement);
     });
-    // Display dealer's hand
+
+    // Display dealer's hand, hiding the second card initially if not revealed
     dealerHand.forEach((card, index) => {
-        if (index === 1 && !showDealerHoleCard) { // Hide second card initially
-            dealerHandDiv.innerHTML += `<p>Hidden Card</p>`;
-        }
-        else {
-            dealerHandDiv.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
+        if (index === 1 && !showDealerHoleCard) {
+            // Placeholder for hidden card
+            const hiddenCardDiv = document.createElement('div');
+            hiddenCardDiv.classList.add('card', 'hidden');
+            dealerHandDiv.appendChild(hiddenCardDiv);
+        } else {
+            const cardElement = renderCard(card);
+            dealerHandDiv.appendChild(cardElement);
         }
     });
 }
@@ -106,12 +133,23 @@ document.getElementById('stand-button').addEventListener('click', async () => {
 document.getElementById('new-game-button').addEventListener('click', () => {
     window.location.reload(); // This reloads the current document.
 });
-function renderCard(suit) {
+// function renderCard(suit) {
+//     const cardDiv = document.createElement('div');
+//     cardDiv.classList.add('card');
+//     cardDiv.innerHTML = `<img src="/assets/${suit}.svg" alt="${suit}">`;
+//     return cardDiv;
+// }
+function renderCard(card) {
+    // Create a card div with the required styles
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
-    cardDiv.innerHTML = `<img src="/assets/${suit}.svg" alt="${suit}">`;
+
+    // Add the suit and value
+    cardDiv.innerHTML = `${card.card} <br> ${card.suit}`;
+
     return cardDiv;
 }
+
 function renderHand(hand, handDiv) {
     hand.forEach(card => {
         const cardDiv = renderCard(card.suit);
