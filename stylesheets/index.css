@@ -24,7 +24,7 @@ h1, h2 {
 
 .hand {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin: 15px;
     padding: 10px;
@@ -42,12 +42,12 @@ h1, h2 {
     border-radius: 5px;
     margin: 5px;
     display: flex;
-    align-items: center;
+    align-items:start;
     justify-content: center;
     background-color: #ffffff;
     color: #c82020;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 0.9em;
 }
 
 .card.hidden {
@@ -71,14 +71,12 @@ button:hover {
 }
 
 @media (min-width: 768px) {
-    .hand {
-        flex-direction: row;
-    }
+  
 
     .card {
         width: 90px;
         height: 130px;
-        font-size: 2rem;
+        font-size: 1rem;
     }
 
     button {
@@ -90,12 +88,13 @@ button:hover {
 @media (min-width: 1024px) {
     .hand {
         width: 500px;
+        border: 2px solid red;
     }
 
     .card {
         width: 100px;
         height: 150px;
-        font-size: 2.2rem;
+        font-size: 1.2rem;
     }
 }
 
