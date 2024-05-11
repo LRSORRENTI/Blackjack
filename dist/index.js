@@ -27,8 +27,8 @@ function updateHandsDisplay() {
     const dealerHandDiv = document.getElementById('dealer-hand');
 
     // Clear current hands display
-    playerHandDiv.innerHTML = `<h2>Player's Hand</h2>`;
-    dealerHandDiv.innerHTML = `<h2>Dealer's Hand</h2>`;
+    playerHandDiv.innerHTML = ``;
+    dealerHandDiv.innerHTML = ``;
 
     // Display player's hand using the styled `.card` class
     playerHand.forEach(card => {
