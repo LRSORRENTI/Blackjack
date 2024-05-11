@@ -22,12 +22,22 @@ h1, h2 {
     margin: 10px 0;
 }
 
+#cont-1, #cont-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: auto;
+    margin-right: auto; */
+    
+}
+
 .hand {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 15px;
+    margin: 15px auto;
     padding: 10px;
     /* border: 2px solid #ffffff; */
     border-radius: 8px;
@@ -39,12 +49,12 @@ h1, h2 {
 .card {
     width: 70px;
     height: 100px;
-    border: 2px solid #ffffff;
+    /* border: 2px solid #ffffff; */
     border-radius: 5px;
-    margin: 5px;
+    margin-left: 4px;
     display: flex;
     align-items:start;
-    justify-content: center;
+    justify-content: space-evenly;
     background-color: #ffffff;
     color: #c82020;
     font-weight: bold;
@@ -70,6 +80,13 @@ button {
 
 button:hover {
     background-color: #00796b;
+}
+
+@media (min-width: 499px) {
+
+#cont-1, #cont-2 {
+    margin-left: 0px;
+}
 }
 
 @media (min-width: 768px) {
