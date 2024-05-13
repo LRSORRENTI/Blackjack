@@ -64,7 +64,10 @@ document.getElementById('hit-button').addEventListener('click', () => {
     updateHandsDisplay();
     const playerScore = checkScore(playerHand);
     if (playerScore > 21) {
-        alert("Busted! Player loses.");
+        setTimeout(() => {
+            alert("Busted! Player loses.");
+        }, '500')
+        // alert("Busted! Player loses.");
         return;
     }
 });
