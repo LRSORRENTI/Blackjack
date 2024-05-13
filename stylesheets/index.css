@@ -117,18 +117,21 @@ button:hover {
         height: 150px;
         font-size: 1.2rem;
     }
+
+    .wrap {
+        position: absolute;
+        left: 20%;
+        background-color: red;
+    }
+
+    .wrap-2 {
+        position: absolute;
+        left: 80%;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
-@media (min-width: 1640px) {
-    #cont-1 {
-        position: absolute;
-        left: 100px
-    }
-    #cont-2 {
-        position: absolute;
-        right: 100px
-    }
-}
 
 /* #dealer-hand, #player-hand {
     display: flex; 
