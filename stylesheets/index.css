@@ -75,7 +75,7 @@ button {
     color: #ffffff;
     cursor: pointer;
     font-size: 1rem;
-    width: 120px;
+    width: 115px;
 }
 
 button:hover {
@@ -103,11 +103,11 @@ button:hover {
     button {
         padding: 12px 18px;
         font-size: 1.2rem;
-        width: 160px;
+        width: 145px;
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
     .hand {
         width: 600px;
     }
@@ -126,44 +126,17 @@ button:hover {
 
     .wrap-2 {
         position: absolute;
-        left: 80%;
+        right: 240px;
         display: flex;
         flex-direction: column;
     }
 }
 
-
-/* #dealer-hand, #player-hand {
-    display: flex; 
-    flex-direction: column;
-}
-
-.hand {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-}
-
-.card {
-    width: 100px;
-    height: 150px; 
-    border: 1px solid #000;
-    border-radius: 10px;
-    margin-right: 10px;
-    overflow: hidden;
+/* @media (min-width: 1430px) { 
+    .wrap-2 {
+        position: absolute;
+        right: 400px;
+        display: flex;
+        flex-direction: column;
+    }
 } */
-
-/* .card img {
-    width: 100%;
-    height: 100%;
-}
-
-.hidden {
-    background-image: url('../assets/card.svg');
-    width: 150px;
-    height: 150px;
-
-    background-color: #ccc; 
-}
-
-*/
