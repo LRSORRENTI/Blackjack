@@ -10,7 +10,7 @@ body {
     font-family: Arial, sans-serif;
     background-image: url('../img/blackjack_table.webp');
     background-size: cover;
-    background-position: center;
+    background-position: top;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -22,6 +22,11 @@ body {
 
 h1, h2 {
     margin: 10px 0;
+    background-color: #151816c2;
+    width: 100px;
+    padding-bottom: 10px;
+    padding-top: 8px;
+    border-radius: 10px;
 }
 
 #cont-1, #cont-2 {
@@ -45,7 +50,7 @@ h1, h2 {
     border-radius: 8px;
     max-width: 90%;
     width: 400px;
-    background-color: #3b3b3b;
+    background-color: #151816c2;
 }
 
 .card {
@@ -71,7 +76,7 @@ h1, h2 {
 button {
     margin: 10px;
     padding: 10px 15px;
-    background-color: #009688;
+    background-color: #009687d6;
     border: none;
     border-radius: 5px;
     color: #ffffff;
@@ -81,7 +86,8 @@ button {
 }
 
 button:hover {
-    background-color: #00796b;
+    background-color: #149888;
+    color: #ffffffde;
 }
 
 @media (min-width: 499px) {
@@ -123,7 +129,7 @@ button:hover {
     .wrap {
         position: absolute;
         left: 20%;
-        background-color: red;
+        /* background-color: red; */
     }
 
     .wrap-2 {
