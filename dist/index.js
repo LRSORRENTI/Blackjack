@@ -2,26 +2,7 @@ import drawCard from './drawCard.js';
 import { myDeck } from './genDeck.js';
 import { playerHand, dealerHand } from "./getHands.js";
 import { checkScore } from './checkScore.js';
-// function updateHandsDisplay() {
-//     const playerHandDiv = document.getElementById('player-hand');
-//     const dealerHandDiv = document.getElementById('dealer-hand');
-//     // Clear current hands display
-//     playerHandDiv.innerHTML = `<h2>Player's Hand</h2>`;
-//     dealerHandDiv.innerHTML = `<h2>Dealer's Hand</h2>`;
-//     // Display player's hand
-//     playerHand.forEach(card => {
-//         playerHandDiv.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
-//     });
-//     // Display dealer's hand
-//     dealerHand.forEach((card, index) => {
-//         if (index === 1 && !showDealerHoleCard) { // Hide second card initially
-//             dealerHandDiv.innerHTML += `<p>Hidden Card</p>`;
-//         }
-//         else {
-//             dealerHandDiv.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
-//         }
-//     });
-// }
+
 function updateHandsDisplay() {
     const playerHandDiv = document.getElementById('player-hand');
     const dealerHandDiv = document.getElementById('dealer-hand');
@@ -96,52 +77,11 @@ document.getElementById('stand-button').addEventListener('click', async () => {
         alert(resultMessage);
     }, 500); // Short delay before showing results
 });
-// document.getElementById('stand-button')!.addEventListener('click', () => {
-//     let dealerScore = checkScore(dealerHand);
-//     while (dealerScore < 17) {
-//         dealerHand.push(drawCard(myDeck));
-//         dealerScore = checkScore(dealerHand);
-//     }
-//     updateHandsDisplay(true); // reveal dealer hole card on stand
-//     const playerScore = checkScore(playerHand);
-//     alert(`Final scores - Player: ${playerScore}, Dealer: ${dealerScore}`);
-//     if (playerScore > dealerScore || dealerScore > 21) {
-//         alert("Player wins!");
-//     } else if (playerScore < dealerScore) {
-//         alert("Dealer wins!");
-//     } else {
-//         alert("It's a tie!");
-//     }
-// });
-// document.getElementById('new-game-button').addEventListener('click', startNewGame);
-// function startNewGame() {
-//     // Reset game state
-//     playerHand = [];
-//     dealerHand = [];
-//     showDealerHoleCard = false; // Hide dealer's hole card for new game
-//     myDeck = genDeck(); // Regenerate or reshuffle the deck
-//     // Reset UI
-//     const playerHandDiv = document.getElementById('player-hand');
-//     const dealerHandDiv = document.getElementById('dealer-hand');
-//     playerHandDiv!.innerHTML = `<h2>Player's Hand</h2>`;
-//     dealerHandDiv!.innerHTML = `<h2>Dealer's Hand</h2>`;
-//     // Initial hands
-//     playerHand.push(drawCard(myDeck));
-//     playerHand.push(drawCard(myDeck));
-//     dealerHand.push(drawCard(myDeck));
-//     dealerHand.push(drawCard(myDeck));
-//     // Update UI with initial hands
-//     updateHandsDisplay();
-// }
+
 document.getElementById('new-game-button').addEventListener('click', () => {
     window.location.reload(); // This reloads the current document.
 });
-// function renderCard(suit) {
-//     const cardDiv = document.createElement('div');
-//     cardDiv.classList.add('card');
-//     cardDiv.innerHTML = `<img src="/assets/${suit}.svg" alt="${suit}">`;
-//     return cardDiv;
-// }
+
 function renderCard(card) {
     // Create a card div with the required styles
     const cardDiv = document.createElement('div');
