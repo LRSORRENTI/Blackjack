@@ -76,7 +76,6 @@ h1, h2 {
     flex-direction: column;
     justify-content: space-between;
     background-color: #ffffff;
-    color: #c82020;
     font-weight: bold;
     font-size: 0.9em;
     position: relative;
@@ -119,6 +118,13 @@ h1, h2 {
     background-color: #4a4a4a;
     color: #4a4a4a;
 }
+
+.card-back {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
 
 button {
     margin: 10px;

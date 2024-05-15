@@ -18,16 +18,20 @@ function updateHandsDisplay() {
     });
 
     // Display dealer's hand, hiding the second card initially if not revealed
+    // dealerHand.forEach((card, index) => {
+    //     if (index === 1 && !showDealerHoleCard) {
+    //         // Placeholder for hidden card
+    //         const hiddenCardDiv = document.createElement('div');
+    //         hiddenCardDiv.classList.add('card', 'hidden');
+    //         dealerHandDiv.appendChild(hiddenCardDiv);
+    //     } else {
+    //         const cardElement = renderCard(card);
+    //         dealerHandDiv.appendChild(cardElement);
+    //     }
+    // });
     dealerHand.forEach((card, index) => {
-        if (index === 1 && !showDealerHoleCard) {
-            // Placeholder for hidden card
-            const hiddenCardDiv = document.createElement('div');
-            hiddenCardDiv.classList.add('card', 'hidden');
-            dealerHandDiv.appendChild(hiddenCardDiv);
-        } else {
-            const cardElement = renderCard(card);
-            dealerHandDiv.appendChild(cardElement);
-        }
+        const cardElement = renderCard(card, index === 1 && !showDealerHoleCard);
+        dealerHandDiv.appendChild(cardElement);
     });
 }
 let showDealerHoleCard = false; // Initialize this variable to control visibility of the dealer's hole card
@@ -93,7 +97,7 @@ document.getElementById('new-game-button').addEventListener('click', () => {
 //     return cardDiv;
 // }
 
-function renderCard(card) {
+function renderCard(card, isHidden = false) {
     const suitSymbols = {
         'Hearts': '&hearts;',
         'Diamonds': '&diams;',
@@ -101,27 +105,45 @@ function renderCard(card) {
         'Spades': '&spades;'
     };
 
+    const suitColors = {
+        'Hearts': 'red',
+        'Diamonds': 'red',
+        'Clubs': 'black',
+        'Spades': 'black'
+    };
+
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
 
-    // Add the top left suit and value
-    const topLeftDiv = document.createElement('div');
-    topLeftDiv.classList.add('corner', 'top-left');
-    topLeftDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
+    if (isHidden) {
+        const cardBack = document.createElement('img');
+        cardBack.src = 'img/redCardBack.jpg';
+        cardBack.alt = 'Card Back';
+        cardBack.classList.add('card-back');
+        cardDiv.appendChild(cardBack);
+    } else {
+        // Add the top left suit and value
+        const topLeftDiv = document.createElement('div');
+        topLeftDiv.classList.add('corner', 'top-left');
+        topLeftDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
+        topLeftDiv.style.color = suitColors[card.suit];
 
-    // Add the bottom right suit and value
-    const bottomRightDiv = document.createElement('div');
-    bottomRightDiv.classList.add('corner', 'bottom-right');
-    bottomRightDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
+        // Add the bottom right suit and value
+        const bottomRightDiv = document.createElement('div');
+        bottomRightDiv.classList.add('corner', 'bottom-right');
+        bottomRightDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
+        bottomRightDiv.style.color = suitColors[card.suit];
 
-    // Add the center value
-    const centerDiv = document.createElement('div');
-    centerDiv.classList.add('center');
-    centerDiv.innerHTML = `${card.card}`;
+        // Add the center value
+        const centerDiv = document.createElement('div');
+        centerDiv.classList.add('center');
+        centerDiv.innerHTML = `${card.card}`;
+        centerDiv.style.color = suitColors[card.suit];
 
-    cardDiv.appendChild(topLeftDiv);
-    cardDiv.appendChild(bottomRightDiv);
-    cardDiv.appendChild(centerDiv);
+        cardDiv.appendChild(topLeftDiv);
+        cardDiv.appendChild(bottomRightDiv);
+        cardDiv.appendChild(centerDiv);
+    }
 
     return cardDiv;
 }
