@@ -20,6 +20,13 @@ body {
     text-align: center;
 }
 
+#whole-wrap {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+}
+
 h1, h2 {
     margin: 10px 0;
     background-color: #151816c2;
@@ -27,6 +34,7 @@ h1, h2 {
     padding-bottom: 10px;
     padding-top: 8px;
     border-radius: 10px;
+    width: 180px;
 }
 
 #cont-1, #cont-2 {
@@ -53,19 +61,7 @@ h1, h2 {
     background-color: #151816c2;
 }
 
-/* .card {
-    width: 70px;
-    height: 100px;
-    border-radius: 5px;
-    margin-left: 4px;
-    display: flex;
-    align-items:start;
-    justify-content: space-evenly;
-    background-color: #ffffff;
-    color: #c82020;
-    font-weight: bold;
-    font-size: 0.9em;
-} */
+
 
 .card {
     width: 70px;
@@ -113,12 +109,6 @@ h1, h2 {
     height: 100%;
 }
 
-
-.card.hidden {
-    background-color: #4a4a4a;
-    color: #4a4a4a;
-}
-
 .card-back {
     width: 100%;
     height: 100%;
@@ -129,17 +119,20 @@ h1, h2 {
 button {
     margin: 10px;
     padding: 10px 15px;
-    background-color: #009687d6;
+    /* background-color: #009687d6; */
+    background-color: #151816c2;
     border: none;
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: bolder;
     width: 115px;
 }
 
 button:hover {
-    background-color: #149888;
+    /* background-color: #149888; */
+    background-color: #00964daf;
     color: #ffffffde;
 }
 
