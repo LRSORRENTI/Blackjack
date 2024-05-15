@@ -4,29 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./stylesheets/index.css">
+    <link rel="icon" href="./public/favicon.ico" type="image/x-icon">
     <title>Blackjack</title>
 </head>
 <body>
-    <h1>Blackjack</h1>
+    <!-- <h1>Blackjack</h1> -->
+    <div id="whole-wrap">
+    <div class="wrap">
     <div id="cont-1">
-    <h2>dealer</h2>
+    <h2>Dealer</h2>
     <div id="dealer-hand" class="hand">
         <div class="card"></div>
         <div class="card hidden"></div> <!-- Hidden card -->
     </div>
     </div>
     <div id="cont-2">
-    <h2>player</h2>
+    <h2>Player</h2>
     <div id="player-hand" class="hand">
         <div class="card"></div>
         <div class="card"></div>
     </div>
 </div>
-    
+</div>
+    <div class="wrap-2">
     <button id="hit-button">Hit</button>
     <button id="stand-button">Stand</button>
     <button id="new-game-button">New Game</button>
     <div class="img"></div>
+    </div>
+    </div>
     <!-- <h1>HELLO</h1> -->
     <!-- <img src="./assets/clubs.svg" alt=""> -->
     <script type="module" src="./dist/index.js"></script>

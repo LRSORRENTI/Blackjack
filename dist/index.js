@@ -2,26 +2,7 @@ import drawCard from './drawCard.js';
 import { myDeck } from './genDeck.js';
 import { playerHand, dealerHand } from "./getHands.js";
 import { checkScore } from './checkScore.js';
-// function updateHandsDisplay() {
-//     const playerHandDiv = document.getElementById('player-hand');
-//     const dealerHandDiv = document.getElementById('dealer-hand');
-//     // Clear current hands display
-//     playerHandDiv.innerHTML = `<h2>Player's Hand</h2>`;
-//     dealerHandDiv.innerHTML = `<h2>Dealer's Hand</h2>`;
-//     // Display player's hand
-//     playerHand.forEach(card => {
-//         playerHandDiv.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
-//     });
-//     // Display dealer's hand
-//     dealerHand.forEach((card, index) => {
-//         if (index === 1 && !showDealerHoleCard) { // Hide second card initially
-//             dealerHandDiv.innerHTML += `<p>Hidden Card</p>`;
-//         }
-//         else {
-//             dealerHandDiv.innerHTML += `<p>${card.card} of ${card.suit}</p>`;
-//         }
-//     });
-// }
+
 function updateHandsDisplay() {
     const playerHandDiv = document.getElementById('player-hand');
     const dealerHandDiv = document.getElementById('dealer-hand');
@@ -37,16 +18,20 @@ function updateHandsDisplay() {
     });
 
     // Display dealer's hand, hiding the second card initially if not revealed
+    // dealerHand.forEach((card, index) => {
+    //     if (index === 1 && !showDealerHoleCard) {
+    //         // Placeholder for hidden card
+    //         const hiddenCardDiv = document.createElement('div');
+    //         hiddenCardDiv.classList.add('card', 'hidden');
+    //         dealerHandDiv.appendChild(hiddenCardDiv);
+    //     } else {
+    //         const cardElement = renderCard(card);
+    //         dealerHandDiv.appendChild(cardElement);
+    //     }
+    // });
     dealerHand.forEach((card, index) => {
-        if (index === 1 && !showDealerHoleCard) {
-            // Placeholder for hidden card
-            const hiddenCardDiv = document.createElement('div');
-            hiddenCardDiv.classList.add('card', 'hidden');
-            dealerHandDiv.appendChild(hiddenCardDiv);
-        } else {
-            const cardElement = renderCard(card);
-            dealerHandDiv.appendChild(cardElement);
-        }
+        const cardElement = renderCard(card, index === 1 && !showDealerHoleCard);
+        dealerHandDiv.appendChild(cardElement);
     });
 }
 let showDealerHoleCard = false; // Initialize this variable to control visibility of the dealer's hole card
@@ -64,7 +49,10 @@ document.getElementById('hit-button').addEventListener('click', () => {
     updateHandsDisplay();
     const playerScore = checkScore(playerHand);
     if (playerScore > 21) {
-        alert("Busted! Player loses.");
+        setTimeout(() => {
+            alert("Busted! Player loses.");
+        }, '500')
+        // alert("Busted! Player loses.");
         return;
     }
 });
@@ -93,62 +81,73 @@ document.getElementById('stand-button').addEventListener('click', async () => {
         alert(resultMessage);
     }, 500); // Short delay before showing results
 });
-// document.getElementById('stand-button')!.addEventListener('click', () => {
-//     let dealerScore = checkScore(dealerHand);
-//     while (dealerScore < 17) {
-//         dealerHand.push(drawCard(myDeck));
-//         dealerScore = checkScore(dealerHand);
-//     }
-//     updateHandsDisplay(true); // reveal dealer hole card on stand
-//     const playerScore = checkScore(playerHand);
-//     alert(`Final scores - Player: ${playerScore}, Dealer: ${dealerScore}`);
-//     if (playerScore > dealerScore || dealerScore > 21) {
-//         alert("Player wins!");
-//     } else if (playerScore < dealerScore) {
-//         alert("Dealer wins!");
-//     } else {
-//         alert("It's a tie!");
-//     }
-// });
-// document.getElementById('new-game-button').addEventListener('click', startNewGame);
-// function startNewGame() {
-//     // Reset game state
-//     playerHand = [];
-//     dealerHand = [];
-//     showDealerHoleCard = false; // Hide dealer's hole card for new game
-//     myDeck = genDeck(); // Regenerate or reshuffle the deck
-//     // Reset UI
-//     const playerHandDiv = document.getElementById('player-hand');
-//     const dealerHandDiv = document.getElementById('dealer-hand');
-//     playerHandDiv!.innerHTML = `<h2>Player's Hand</h2>`;
-//     dealerHandDiv!.innerHTML = `<h2>Dealer's Hand</h2>`;
-//     // Initial hands
-//     playerHand.push(drawCard(myDeck));
-//     playerHand.push(drawCard(myDeck));
-//     dealerHand.push(drawCard(myDeck));
-//     dealerHand.push(drawCard(myDeck));
-//     // Update UI with initial hands
-//     updateHandsDisplay();
-// }
+
 document.getElementById('new-game-button').addEventListener('click', () => {
     window.location.reload(); // This reloads the current document.
 });
-// function renderCard(suit) {
+
+// function renderCard(card) {
+//     // Create a card div with the required styles
 //     const cardDiv = document.createElement('div');
 //     cardDiv.classList.add('card');
-//     cardDiv.innerHTML = `<img src="/assets/${suit}.svg" alt="${suit}">`;
+
+//     // Add the suit and value
+//     cardDiv.innerHTML = `${card.card} <br> ${card.suit}`;
+
 //     return cardDiv;
 // }
-function renderCard(card) {
-    // Create a card div with the required styles
+
+function renderCard(card, isHidden = false) {
+    const suitSymbols = {
+        'Hearts': '&hearts;',
+        'Diamonds': '&diams;',
+        'Clubs': '&clubs;',
+        'Spades': '&spades;'
+    };
+
+    const suitColors = {
+        'Hearts': 'red',
+        'Diamonds': 'red',
+        'Clubs': 'black',
+        'Spades': 'black'
+    };
+
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
 
-    // Add the suit and value
-    cardDiv.innerHTML = `${card.card} <br> ${card.suit}`;
+    if (isHidden) {
+        const cardBack = document.createElement('img');
+        cardBack.src = 'img/redCardBack.jpg';
+        cardBack.alt = 'Card Back';
+        cardBack.classList.add('card-back');
+        cardDiv.appendChild(cardBack);
+    } else {
+        // Add the top left suit and value
+        const topLeftDiv = document.createElement('div');
+        topLeftDiv.classList.add('corner', 'top-left');
+        topLeftDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
+        topLeftDiv.style.color = suitColors[card.suit];
+
+        // Add the bottom right suit and value
+        const bottomRightDiv = document.createElement('div');
+        bottomRightDiv.classList.add('corner', 'bottom-right');
+        bottomRightDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
+        bottomRightDiv.style.color = suitColors[card.suit];
+
+        // Add the center value
+        const centerDiv = document.createElement('div');
+        centerDiv.classList.add('center');
+        centerDiv.innerHTML = `${card.card}`;
+        centerDiv.style.color = suitColors[card.suit];
+
+        cardDiv.appendChild(topLeftDiv);
+        cardDiv.appendChild(bottomRightDiv);
+        cardDiv.appendChild(centerDiv);
+    }
 
     return cardDiv;
 }
+
 
 function renderHand(hand, handDiv) {
     hand.forEach(card => {

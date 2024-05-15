@@ -8,7 +8,7 @@ export default function drawCard(deck) {
     // generate random number with max of deck.length which is 52
     const randomIdx = Math.floor(Math.random() * deck.length);
     const card = deck[randomIdx];
-    // console.log(deck);
+
     // splice() is an important choice because we need to 
     // alter the length of the array, if we used slice() 
     // instead it would not modify the length
@@ -16,4 +16,4 @@ export default function drawCard(deck) {
     // console.log(randomIdx, card);
     return card;
 }
-// const myCard = drawCard(myDeck);
+
