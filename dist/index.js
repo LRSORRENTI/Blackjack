@@ -82,16 +82,50 @@ document.getElementById('new-game-button').addEventListener('click', () => {
     window.location.reload(); // This reloads the current document.
 });
 
+// function renderCard(card) {
+//     // Create a card div with the required styles
+//     const cardDiv = document.createElement('div');
+//     cardDiv.classList.add('card');
+
+//     // Add the suit and value
+//     cardDiv.innerHTML = `${card.card} <br> ${card.suit}`;
+
+//     return cardDiv;
+// }
+
 function renderCard(card) {
-    // Create a card div with the required styles
+    const suitSymbols = {
+        'Hearts': '&hearts;',
+        'Diamonds': '&diams;',
+        'Clubs': '&clubs;',
+        'Spades': '&spades;'
+    };
+
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card');
 
-    // Add the suit and value
-    cardDiv.innerHTML = `${card.card} <br> ${card.suit}`;
+    // Add the top left suit and value
+    const topLeftDiv = document.createElement('div');
+    topLeftDiv.classList.add('corner', 'top-left');
+    topLeftDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
+
+    // Add the bottom right suit and value
+    const bottomRightDiv = document.createElement('div');
+    bottomRightDiv.classList.add('corner', 'bottom-right');
+    bottomRightDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
+
+    // Add the center value
+    const centerDiv = document.createElement('div');
+    centerDiv.classList.add('center');
+    centerDiv.innerHTML = `${card.card}`;
+
+    cardDiv.appendChild(topLeftDiv);
+    cardDiv.appendChild(bottomRightDiv);
+    cardDiv.appendChild(centerDiv);
 
     return cardDiv;
 }
+
 
 function renderHand(hand, handDiv) {
     hand.forEach(card => {
