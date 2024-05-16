@@ -93,11 +93,13 @@ h1, h2 {
 .top-left {
     top: 5px;
     left: 5px;
+    text-align: left;
 }
 
 .bottom-right {
     bottom: 5px;
     right: 5px;
+    text-align: left;
     transform: rotate(180deg);
 }
 
