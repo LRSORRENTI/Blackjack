@@ -295,6 +295,24 @@ function renderCard(card, isHidden = false) {
         if (icons[card.card]) {
             centerDiv.innerHTML = icons[card.card];
             centerDiv.classList.add('icon-center'); // Add class for icon center
+        } else if (!isNaN(card.card) && card.card >= 2 && card.card <= 10) {
+            // Create a grid for number cards (2-10)
+            if (card.card <= 4) {
+                centerDiv.style.gridTemplateColumns = 'repeat(1, 3fr)';
+            } else if (card.card <= 8) {
+                centerDiv.style.gridTemplateColumns = 'repeat(2, 1fr)';
+            } else {
+                centerDiv.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            }
+            centerDiv.style.display = 'grid';
+            centerDiv.style.justifyItems = 'center';
+            centerDiv.style.alignItems = 'center';
+            for (let i = 0; i < card.card; i++) {
+                const iconSpan = document.createElement('span');
+                iconSpan.innerHTML = suitSymbols[card.suit];
+                iconSpan.style.color = suitColors[card.suit];
+                centerDiv.appendChild(iconSpan);
+            }
         } else {
             centerDiv.innerHTML = `${card.card}`;
         }
@@ -308,6 +326,7 @@ function renderCard(card, isHidden = false) {
     return cardDiv;
 }
 
+
 // Function to render a hand
 function renderHand(hand, handDiv) {
     hand.forEach(card => {
@@ -315,7 +334,6 @@ function renderHand(hand, handDiv) {
         handDiv.appendChild(cardDiv);
     });
 }
-
 
 // Function to end the game and disable buttons
 function endGame() {
