@@ -160,6 +160,7 @@
 // renderHand(playerHand, document.getElementById('player-hand'));
 // // Initial cards displayed
 // updateHandsDisplay(); // Initially hide dealer's hole card
+import '../stylesheets/index.css';
 import drawCard from './drawCard.js';
 import { myDeck } from './genDeck.js';
 import { playerHand, dealerHand } from "./getHands.js";
