@@ -161,6 +161,7 @@
 // // Initial cards displayed
 // updateHandsDisplay(); // Initially hide dealer's hole card
 import '../stylesheets/index.css';
+import redCardBack from '../img/redCardBack.jpg';
 import drawCard from './drawCard.js';
 import { myDeck } from './genDeck.js';
 import { playerHand, dealerHand } from "./getHands.js";
@@ -274,7 +275,7 @@ function renderCard(card, isHidden = false) {
 
     if (isHidden) {
         const cardBack = document.createElement('img');
-        cardBack.src = 'img/redCardBack.jpg';
+        cardBack.src = redCardBack;
         cardBack.alt = 'Card Back';
         cardBack.classList.add('card-back');
         cardDiv.appendChild(cardBack);

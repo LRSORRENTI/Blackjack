@@ -8,6 +8,7 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true, // Clean the output directory before emit
+        assetModuleFilename: 'img/[name][ext]', // Specify the output path for assets
     },
     module: {
         rules: [
@@ -18,6 +19,9 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif|webp|ico)$/i,
                 type: 'asset/resource',
+                generator: {
+                    filename: 'img/[name][ext]', // Specify the output path for assets
+                },
             },
         ],
     },
