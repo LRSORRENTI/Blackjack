@@ -263,7 +263,8 @@ function renderCard(card, isHidden = false) {
     const icons = {
         'King': '&#x2654;',  // Unicode for a King chess piece as a placeholder
         'Queen': '&#x2655;', // Unicode for a Queen chess piece as a placeholder
-        'Jack': '&#x2149;',  // Unicode for a script letter J as a placeholder
+        // 'Jack': '&#x2149;',  // Unicode for a script letter J as a placeholder
+        'Jack': 'J',  // Unicode for a script letter J as a placeholder
         'Ace': '&#x2664;'    // Unicode for a spade as a placeholder
     };
 
@@ -294,7 +295,8 @@ function renderCard(card, isHidden = false) {
         centerDiv.classList.add('center');
         if (icons[card.card]) {
             centerDiv.innerHTML = icons[card.card];
-            centerDiv.classList.add('icon-center'); // Add class for icon center
+            centerDiv.classList.add('icon-center');
+            // Add class for icon center
         } else if (!isNaN(card.card) && card.card >= 2 && card.card <= 10) {
             // Create a grid for number cards (2-10)
             if (card.card <= 4) {

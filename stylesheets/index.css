@@ -153,8 +153,9 @@ button:hover {
     align-items: center;
     font-size: 1.1em;
     height: 100%;
+    /* margin-top: 4px; */
     padding: 10px;
-    /* margin-left: 2px; */
+    /* padding-bottom: 5px; */
     box-sizing: border-box;
 }
 
