@@ -1,18 +1,10 @@
-# Blackjack
+# Blackjack &diams; &hearts; &spades; &clubs;
 
-Building a blackjack game playable in the browser
+**This project is a browser-based Blackjack game implemented with HTML, CSS, and JavaScript. The project uses Webpack for bundling and optimizing assets for production.**
 
-1. Logic first, build game logic
-- Model cards / suits eg {card: "Ace", suit: "Spades"}
-- Function to generate a deck of 52 cards
-- Add way to draw cards from the deck, to keep track of which card gets removed from the deck
-- Function to calculate score
-- Function to loop game until CPU or player wins
-2. Create DOM elements for game
-3. Ensure game is fully playable, interactable in the DOM
-4. Add styles 									
+## Features
 
-&diams;
-&hearts;
-&spades;
-&clubs;
+- Classic Blackjack gameplay
+- Responsive design with custom styling
+- Card rendering with dynamically generated content
+- Webpack configuration for asset bundling and optimization
