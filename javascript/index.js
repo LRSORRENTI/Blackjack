@@ -160,7 +160,6 @@
 // renderHand(playerHand, document.getElementById('player-hand'));
 // // Initial cards displayed
 // updateHandsDisplay(); // Initially hide dealer's hole card
-
 import drawCard from './drawCard.js';
 import { myDeck } from './genDeck.js';
 import { playerHand, dealerHand } from "./getHands.js";
@@ -184,31 +183,23 @@ function updateHandsDisplay() {
     });
 
     // Display dealer's hand, hiding the second card initially if not revealed
-    // dealerHand.forEach((card, index) => {
-    //     if (index === 1 && !showDealerHoleCard) {
-    //         // Placeholder for hidden card
-    //         const hiddenCardDiv = document.createElement('div');
-    //         hiddenCardDiv.classList.add('card', 'hidden');
-    //         dealerHandDiv.appendChild(hiddenCardDiv);
-    //     } else {
-    //         const cardElement = renderCard(card);
-    //         dealerHandDiv.appendChild(cardElement);
-    //     }
-    // });
     dealerHand.forEach((card, index) => {
         const cardElement = renderCard(card, index === 1 && !showDealerHoleCard);
         dealerHandDiv.appendChild(cardElement);
     });
 }
+
 // Delay function to allow the UI to update
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 function dealerHasSoftSeventeen(hand) {
     const score = checkScore(hand);
     const containsAce = hand.some(card => card.card === 'Ace');
     return score === 17 && containsAce;
 }
+
 document.getElementById('hit-button').addEventListener('click', () => {
     if (gameEnded) return;
     playerHand.push(drawCard(myDeck));
@@ -217,12 +208,12 @@ document.getElementById('hit-button').addEventListener('click', () => {
     if (playerScore > 21) {
         setTimeout(() => {
             alert("Busted! Player loses.");
-        }, '500')
+        }, 500);
         endGame();
-        // alert("Busted! Player loses.");
         return;
     }
 });
+
 document.getElementById('stand-button').addEventListener('click', async () => {
     if (gameEnded) return;
     let dealerScore = checkScore(dealerHand);
@@ -239,11 +230,9 @@ document.getElementById('stand-button').addEventListener('click', async () => {
         let resultMessage = `Final scores - Player: ${playerScore}, Dealer: ${dealerScore}\n`;
         if (playerScore > dealerScore || dealerScore > 21) {
             resultMessage += "Player wins!";
-        }
-        else if (playerScore < dealerScore) {
+        } else if (playerScore < dealerScore) {
             resultMessage += "Dealer wins!";
-        }
-        else {
+        } else {
             resultMessage += "It's a tie!";
         }
         alert(resultMessage);
@@ -255,17 +244,7 @@ document.getElementById('new-game-button').addEventListener('click', () => {
     window.location.reload(); // This reloads the current document.
 });
 
-// function renderCard(card) {
-//     // Create a card div with the required styles
-//     const cardDiv = document.createElement('div');
-//     cardDiv.classList.add('card');
-
-//     // Add the suit and value
-//     cardDiv.innerHTML = `${card.card} <br> ${card.suit}`;
-
-//     return cardDiv;
-// }
-
+// Function to render a card
 function renderCard(card, isHidden = false) {
     const suitSymbols = {
         'Hearts': '&hearts;',
@@ -279,6 +258,13 @@ function renderCard(card, isHidden = false) {
         'Diamonds': 'red',
         'Clubs': 'black',
         'Spades': 'black'
+    };
+
+    const icons = {
+        'King': '&#x2654;',  // Unicode for a King chess piece as a placeholder
+        'Queen': '&#x2655;', // Unicode for a Queen chess piece as a placeholder
+        'Jack': '&#x2149;',  // Unicode for a script letter J as a placeholder
+        'Ace': '&#x2664;'    // Unicode for a spade as a placeholder
     };
 
     const cardDiv = document.createElement('div');
@@ -303,10 +289,15 @@ function renderCard(card, isHidden = false) {
         bottomRightDiv.innerHTML = `${card.card} <br> ${suitSymbols[card.suit]}`;
         bottomRightDiv.style.color = suitColors[card.suit];
 
-        // Add the center value
+        // Add the center value or icon
         const centerDiv = document.createElement('div');
         centerDiv.classList.add('center');
-        centerDiv.innerHTML = `${card.card}`;
+        if (icons[card.card]) {
+            centerDiv.innerHTML = icons[card.card];
+            centerDiv.classList.add('icon-center'); // Add class for icon center
+        } else {
+            centerDiv.innerHTML = `${card.card}`;
+        }
         centerDiv.style.color = suitColors[card.suit];
 
         cardDiv.appendChild(topLeftDiv);
@@ -317,13 +308,14 @@ function renderCard(card, isHidden = false) {
     return cardDiv;
 }
 
-
+// Function to render a hand
 function renderHand(hand, handDiv) {
     hand.forEach(card => {
-        const cardDiv = renderCard(card.suit);
+        const cardDiv = renderCard(card);
         handDiv.appendChild(cardDiv);
     });
 }
+
 
 // Function to end the game and disable buttons
 function endGame() {
@@ -335,5 +327,6 @@ function endGame() {
 // Call renderHand for both dealer's and player's hands
 renderHand(dealerHand, document.getElementById('dealer-hand'));
 renderHand(playerHand, document.getElementById('player-hand'));
+
 // Initial cards displayed
 updateHandsDisplay(); // Initially hide dealer's hole card

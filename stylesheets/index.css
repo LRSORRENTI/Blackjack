@@ -34,7 +34,7 @@ h1, h2 {
     padding-bottom: 10px;
     padding-top: 8px;
     border-radius: 10px;
-    width: 180px;
+    width: 400px;
 }
 
 #cont-1, #cont-2 {
@@ -138,6 +138,14 @@ button:hover {
     color: #ffffffde;
 }
 
+.icon-center {
+    font-size: 3em; 
+    text-align: center;
+    line-height: 1.5em;
+    font-weight: 100;
+}
+
+
 @media (min-width: 499px) {
 
 #cont-1, #cont-2 {
@@ -161,11 +169,25 @@ button:hover {
         font-size: 1.2rem;
         width: 145px;
     }
+    h1, h2 {
+        width: 490px;
+    }
+    .icon-center {
+        font-size: 4em; 
+        text-align: center;
+        line-height: 1.5em;
+        font-weight: 100;
+    }
+    
 }
 
 @media (min-width: 1280px) {
     .hand {
         width: 600px;
+    }
+
+    h1, h2 {
+        width: 580px;
     }
 
     .card {
