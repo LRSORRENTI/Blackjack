@@ -304,7 +304,7 @@ function renderCard(card, isHidden = false) {
             } else if (card.card <= 8) {
                 centerDiv.style.gridTemplateColumns = 'repeat(2, 1fr)';
             } else {
-                centerDiv.style.gridTemplateColumns = 'repeat(3, 1fr)';
+                centerDiv.style.gridTemplateColumns = 'repeat(3, 2fr)';
             }
             centerDiv.style.display = 'grid';
             centerDiv.style.justifyItems = 'center';
